@@ -138,7 +138,7 @@ pub trait Rand: Debug + Serialize + DeserializeOwned {
 
     /// Gets a value between [0, n]
     fn zero_upto(&mut self, n: usize) -> usize {
-        fast_bound_usize(self.next(), n)
+        fast_bound_usize(self.next(), n.saturating_add(1))
     }
 
     /// Gets a value between the given lower bound (inclusive) and upper bound (inclusive)
